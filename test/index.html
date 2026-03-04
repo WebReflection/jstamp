@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Python to JS Signature</title>
+        <link rel="stylesheet" href="https://pyscript.net/releases/2026.3.1/core.css" />
+        <style>.error{color:red}</style>
+        <script type="module" src="https://pyscript.net/releases/2026.3.1/core.js"></script>
+    </head>
+    <body>
+        <script>
+          const type = location.search === '?mpy' ? 'mpy' : 'py';
+          const config = location.hostname === 'localhost' ? 'config.toml' : 'https://webreflection.github.io/jstamp/config.toml';
+          document.write(`<script type="${type}" src="main.py" config="${config}"><\x2fscript>`);
+        </script>
+        <textarea id="code" rows="12" cols="80" placeholder="Python function">
+# def fn1(a, b, /): pass
+# def fn2(a, b, /, *args): pass
+# def fn3(a, b, /, **kwargs): pass
+def fn4(*, a, b): pass
+def fn5(a, b): pass
+def fn6(a, b, **kwargs): pass
+def fn7(a, b, *args): pass
+def fn8(): pass
+def fn9(*args): pass
+def fn10(**kwargs): pass
+def fn11(*args, **kwargs): pass
+        </textarea>
+        <pre id="output"></pre>
+    </body>
+</html>

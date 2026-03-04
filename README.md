@@ -88,7 +88,7 @@ export /* 🐍:fn5(a, b) */ function fn5(a, b) {
 }
 
 export /* 🐍:fn6(a, b, **kwargs) */ function fn6(a, b) {
-  const args = [], kwargs = arguments.length === 1 && is_kwargs(a, ["a", "b"]) ? a : as_kwargs(arguments, ["a", "b"]);
+  const args = [], kwargs = arguments.length === 1 && is_kwargs(a, ["a", "b"]) ? a : merge_kwargs(arguments, ["a", "b"]);
   return invoke("fn6", args, kwargs);
 }
 

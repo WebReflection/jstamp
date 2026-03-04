@@ -1,0 +1,4 @@
+experimental_remote_packages = true
+
+# see: https://github.com/WebReflection/jstamp
+packages = ["http://localhost:8080/config.toml"]

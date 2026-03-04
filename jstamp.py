@@ -1,5 +1,8 @@
 from inspect import getmembers, signature
 from json import dumps
+from sys import version
+
+IS_MICROPYTHON = 'MicroPython' in version
 
 __all__ = ['export', 'transform']
 
@@ -53,10 +56,10 @@ def transform(fn):
     has_positional_only = False
     has_keyword_only = False
     i = 0
+
     for param in sig.parameters.values():
         # MicroPython only
-        if isinstance(param, str):
-            has_positional_only = True
+        if IS_MICROPYTHON:
             keys.append(param)
         # MicroPython + CPython
         elif param.kind == param.KEYWORD_ONLY:
@@ -76,7 +79,15 @@ def transform(fn):
 
     js = f'export{_signature(fn.__name__, sig)}function {fn.__name__}('
 
-    if keys:
+    # keys make no sense so far in MicroPython
+    # everything is handled as just args 🤷
+    if IS_MICROPYTHON:
+        js += '...args) {'
+        js += '\n  const kwargs = {};'
+        pass
+
+    # CPython only
+    elif keys:
         # test(a, b, /)
         if has_positional_only:
             js += ', '.join(keys)
