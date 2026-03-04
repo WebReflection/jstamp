@@ -1,0 +1,4 @@
+name = "jstamp"
+
+[files]
+"./jstamp.py" = ""
