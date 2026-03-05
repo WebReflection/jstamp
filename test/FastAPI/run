@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# to use this env type either:
+# . run
+# or
+# source run
+
+python -m venv env
+source env/bin/activate
+
+if [ ! -f "jstamp-0.0.1-py3-none-any.whl" ]; then
+    curl -LO https://github.com/WebReflection/jstamp/raw/refs/heads/main/pypi/jstamp-0.0.1-py3-none-any.whl
+fi
+
+pip install --upgrade pip
+pip install fastapi[standard] jstamp-0.0.1-py3-none-any.whl
+
+fastapi dev server.py

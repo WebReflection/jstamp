@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JStamp Demo</title>
+</head>
+<body>
+  <h1>JStamp Demo</h1>
+  <p>This is a demo of the JStamp library.</p>
+  <script type="module">
+    // import { add, subtract } from '/🐍';
+    import * as python from '/🐍';
+    const { add, subtract } = python;
+
+    console.log(
+      await subtract(
+        await add(1, 2),
+        await add(1, 1),
+      ),
+    );
+
+    try {
+      await python.non_existent();
+    }
+    catch (error) {
+      console.log(error);
+    }
+
+    try {
+      await python.add('shenanigans');
+    }
+    catch (error) {
+      console.log(error);
+    }
+  </script>
+</body>
+</html>
