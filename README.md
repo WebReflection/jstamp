@@ -157,9 +157,12 @@ By default, that function is:
 async function $invoke(name, args, kwargs) {
   const response = await fetch('/jstamp', {
     method: 'POST',
-    body: JSON.stringify({ name, args, kwargs }),
+    body: JSON.stringify([name, args, kwargs]),
   });
-  return response.json();
+  // expects a response like [ok, err]
+  const [result, error] = await response.json();
+  if (error) throw new Error(error);
+  return result;
 }
 ```
 
