@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>JStamp Test</title>
+        <script type="module">
+          import * as module from './module.js';
+
+          const signature = ([str]) => str.replace(/^[^🐍]+🐍:([^\2]+)( \*\/).+$/, '$1');
+
+          const tests = {
+            fn1(fn) {
+              return [
+                fn(1, 2, 3),
+                fn({ a: 1, b: 2, c: 3 }),
+              ];
+            },
+            fn2(fn) {
+              return [
+                fn(1, 2, 3),
+                fn({ a: 1, b: 2, c: 3 }),
+              ];
+            },
+            fn3(fn) {
+              return [
+                fn(1, 2, { c: 3 }),
+                fn({ a: 1, b: 2, c: 3 }),
+              ];
+            },
+            fn4(fn) {
+              return [
+                fn({ a: 1, c: 3 }),
+              ];
+            },
+            fn5(fn) {
+              return [
+                fn(1, 2),
+                fn({ a: 1, c: 3 }),
+              ];
+            },
+            fn6(fn) {
+              return [
+                fn(1, 2, { c: 3 }),
+                fn({ a: 1, c: 3 }),
+              ];
+            },
+            fn7(fn) {
+              return [
+                fn(1, 2, 3),
+                fn({ a: 1, c: 3 }),
+              ];
+            },
+            fn8(fn) {
+              return [
+                fn(1, 2, 3),
+                fn({ a: 1, c: 3 }),
+              ];
+            },
+            fn9(fn) {
+              return [
+                fn(1, 2, 3),
+                fn({ a: 1, c: 3 }),
+              ];
+            },
+            fn10(fn) {
+              return [
+                fn({ a: 1, c: 3 }, 2, 3),
+              ];
+            },
+            fn11(fn) {
+              return [
+                fn(1, 2, 3),
+                fn({ a: 1 }),
+                fn(1, 2, { c: 3 }),
+              ];
+            },
+          };
+
+          let i = 0;
+          while (++i) {
+            const name = `fn${i}`;
+            if (!(name in module) || !tests[name]) break;
+            const sig = signature(module[name].toString().split('\n'));
+            console.log('%c' + sig, 'font-weight:bold');
+            console.log('%c' + JSON.stringify(tests[name](module[name])), 'font-size:smaller');
+            console.log('');
+          }
+
+          document.body.append('OK, see console for results');
+        </script>
+    </head>
+</html>
