@@ -9,9 +9,9 @@
   <h1>JStamp Demo</h1>
   <p>This is a demo of the JStamp library.</p>
   <script type="module">
-    // import { add, subtract } from '/🐍';
-    import * as python from '/🐍';
-    const { add, subtract } = python;
+    import { add, subtract } from '/🐍';
+    // import * as python from '/🐍';
+    // const { add, subtract } = python;
 
     console.log(
       await subtract(
@@ -20,19 +20,19 @@
       ),
     );
 
-    try {
-      await python.non_existent();
-    }
-    catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   await python.non_existent();
+    // }
+    // catch (error) {
+    //   console.log(error);
+    // }
 
-    try {
-      await python.add('shenanigans');
-    }
-    catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   await python.add('shenanigans');
+    // }
+    // catch (error) {
+    //   console.log(error);
+    // }
   </script>
 </body>
 </html>
