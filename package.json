@@ -1,0 +1,24 @@
+{
+  "name": "jstamp",
+  "version": "0.0.0",
+  "description": "Client side JS modules for server side JS runtimes",
+  "main": "jstamp.js",
+  "files": [
+    "jstamp.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebReflection/jstamp.git"
+  },
+  "keywords": [],
+  "author": "Andrea Giammarchi",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/WebReflection/jstamp/issues"
+  },
+  "homepage": "https://github.com/WebReflection/jstamp#readme"
+}
